@@ -74,6 +74,9 @@ describe "Authentication" do
 			describe "visiting the edit page" do
 				before { visit edit_user_path(user) }
 				it { should have_title('Sign in') }
+				it { should_not have_link('Profile',     href: user_path(user)) }
+				it { should_not have_link('Settings',    href: edit_user_path(user)) }
+				it { should_not have_link('Sign out',    href: signout_path) }
 			end
 
 			describe "submitting to the update action" do
